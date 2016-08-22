@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Duarti.Maverick.Cielo", "Duarti.Maverick.Cielo\Duarti.Maverick.Cielo.csproj", "{86182F72-E955-4D07-96CD-37C02CD2D941}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Duarti.Maverick.CieloTests", "Duarti.Maverick.CieloTests\Duarti.Maverick.CieloTests.csproj", "{F88F8235-A395-4604-9E50-BE375CF00A0D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{86182F72-E955-4D07-96CD-37C02CD2D941}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86182F72-E955-4D07-96CD-37C02CD2D941}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86182F72-E955-4D07-96CD-37C02CD2D941}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86182F72-E955-4D07-96CD-37C02CD2D941}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F88F8235-A395-4604-9E50-BE375CF00A0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F88F8235-A395-4604-9E50-BE375CF00A0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F88F8235-A395-4604-9E50-BE375CF00A0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F88F8235-A395-4604-9E50-BE375CF00A0D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://isaasoft.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Duarti.Maverick.Cielo\\Duarti.Maverick.Cielo.csproj
+		SccProjectName1 = Duarti.Maverick.Cielo
+		SccLocalPath1 = Duarti.Maverick.Cielo
+		SccProjectUniqueName2 = Duarti.Maverick.CieloTests\\Duarti.Maverick.CieloTests.csproj
+		SccProjectName2 = Duarti.Maverick.CieloTests
+		SccLocalPath2 = Duarti.Maverick.CieloTests
+	EndGlobalSection
+EndGlobal
