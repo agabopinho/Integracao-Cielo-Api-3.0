@@ -24,7 +24,7 @@ namespace Duarti.Maverick.Cielo.Tests
         public void CriaUmaTransacaoAutorizadaSemCapturaResultadoAutorizada()
         {
             var merchantOrderId = new Random().Next();
-            var customer = new Customer("Ágabo D. Pinho");
+            var customer = new Customer("Fulano da Silva");
             var creditCard = new CreditCard(SandboxCreditCard.Authorized1, "Teste Holder", new DateTime(DateTime.Now.Year + 1, 12, 1), "123", Enums.CardBrand.Visa);
             var payment = new Payment(15700, Enums.Currency.BRL, 1, false, ".Net Test Project", creditCard);
             var transaction = new Transaction(merchantOrderId.ToString(), customer, payment);
@@ -38,7 +38,7 @@ namespace Duarti.Maverick.Cielo.Tests
         public void CriaUmaTransacaoComCapturaAutorizadaComParcelaMenorQueCincoReaisResultadoNaoAutorizada()
         {
             var merchantOrderId = new Random().Next();
-            var customer = new Customer("Ágabo D. Pinho");
+            var customer = new Customer("Fulano da Silva");
             var creditCard = new CreditCard(SandboxCreditCard.Authorized1, "Teste Holder", new DateTime(DateTime.Now.Year + 1, 12, 1), "123", Enums.CardBrand.Visa);
             var payment = new Payment(1000, Enums.Currency.BRL, 10, true, ".Net Test Project", creditCard);
             var transaction = new Transaction(merchantOrderId.ToString(), customer, payment);
@@ -53,7 +53,7 @@ namespace Duarti.Maverick.Cielo.Tests
         public void CriaUmaTransacaoAutorizadaComCapturaResultadoPagamentoConfirmado()
         {
             var merchantOrderId = new Random().Next();
-            var customer = new Customer("Ágabo D. Pinho");
+            var customer = new Customer("Fulano da Silva");
             var creditCard = new CreditCard(SandboxCreditCard.Authorized1, "Teste Holder", new DateTime(DateTime.Now.Year + 1, 12, 1), "123", Enums.CardBrand.Visa);
             var payment = new Payment(15700, Enums.Currency.BRL, 1, true, ".Net Test Project", creditCard);
             var transaction = new Transaction(merchantOrderId.ToString(), customer, payment);
@@ -67,7 +67,7 @@ namespace Duarti.Maverick.Cielo.Tests
         public void CriaUmaTransacaoComCartaoNaoAutorizadoResultadoNaoAutorizar()
         {
             var merchantOrderId = new Random().Next();
-            var customer = new Customer("Ágabo D. Pinho");
+            var customer = new Customer("Fulano da Silva");
             var creditCard = new CreditCard(SandboxCreditCard.NotAuthorized, "Teste Holder", new DateTime(DateTime.Now.Year + 1, 12, 1), "123", Enums.CardBrand.Visa);
             var payment = new Payment(15700, Enums.Currency.BRL, 1, true, ".Net Test Project", creditCard);
             var transaction = new Transaction(merchantOrderId.ToString(), customer, payment);
@@ -81,7 +81,7 @@ namespace Duarti.Maverick.Cielo.Tests
         public void CriaUmaTransacaoComCartaoBloqueadoResultadoNaoAutorizar()
         {
             var merchantOrderId = new Random().Next();
-            var customer = new Customer("Ágabo D. Pinho");
+            var customer = new Customer("Fulano da Silva");
             var creditCard = new CreditCard(SandboxCreditCard.NotAuthorizedCardBlocked, "Teste Holder", new DateTime(DateTime.Now.Year + 1, 12, 1), "123", Enums.CardBrand.Visa);
             var payment = new Payment(15700, Enums.Currency.BRL, 1, true, ".Net Test Project", creditCard);
             var transaction = new Transaction(merchantOrderId.ToString(), customer, payment);
@@ -95,7 +95,7 @@ namespace Duarti.Maverick.Cielo.Tests
         public void CriaUmaTransacaoComCartaoCanceladoResultadoNaoAutorizar()
         {
             var merchantOrderId = new Random().Next();
-            var customer = new Customer("Ágabo D. Pinho");
+            var customer = new Customer("Fulano da Silva");
             var creditCard = new CreditCard(SandboxCreditCard.NotAuthorizedCardCanceled, "Teste Holder", new DateTime(DateTime.Now.Year + 1, 12, 1), "123", Enums.CardBrand.Visa);
             var payment = new Payment(15700, Enums.Currency.BRL, 1, true, ".Net Test Project", creditCard);
             var transaction = new Transaction(merchantOrderId.ToString(), customer, payment);
@@ -109,7 +109,7 @@ namespace Duarti.Maverick.Cielo.Tests
         public void CriaUmaTransacaoComCartaoExpiradoResultadoNaoAutorizar()
         {
             var merchantOrderId = new Random().Next();
-            var customer = new Customer("Ágabo D. Pinho");
+            var customer = new Customer("Fulano da Silva");
             var creditCard = new CreditCard(SandboxCreditCard.NotAuthorizedCardExpired, "Teste Holder", new DateTime(DateTime.Now.Year + 1, 12, 1), "123", Enums.CardBrand.Visa);
             var payment = new Payment(15700, Enums.Currency.BRL, 1, true, ".Net Test Project", creditCard);
             var transaction = new Transaction(merchantOrderId.ToString(), customer, payment);
@@ -123,7 +123,7 @@ namespace Duarti.Maverick.Cielo.Tests
         public void CriaUmaTransacaoComCartaoComProblemasResultadoNaoAutorizar()
         {
             var merchantOrderId = new Random().Next();
-            var customer = new Customer("Ágabo D. Pinho");
+            var customer = new Customer("Fulano da Silva");
             var creditCard = new CreditCard(SandboxCreditCard.NotAuthorizedCardProblems, "Teste Holder", new DateTime(DateTime.Now.Year + 1, 12, 1), "123", Enums.CardBrand.Visa);
             var payment = new Payment(15700, Enums.Currency.BRL, 1, true, ".Net Test Project", creditCard);
             var transaction = new Transaction(merchantOrderId.ToString(), customer, payment);
@@ -137,7 +137,7 @@ namespace Duarti.Maverick.Cielo.Tests
         public void CriaUmaTransacaoComCartaoDeTimeOutInternoCieloResultadoNaoAutorizado()
         {
             var merchantOrderId = new Random().Next();
-            var customer = new Customer("Ágabo D. Pinho");
+            var customer = new Customer("Fulano da Silva");
             var creditCard = new CreditCard(SandboxCreditCard.NotAuthorizedTimeOut, "Teste Holder", new DateTime(DateTime.Now.Year + 1, 12, 1), "123", Enums.CardBrand.Visa);
             var payment = new Payment(15700, Enums.Currency.BRL, 1, true, ".Net Test Project", creditCard);
             var transaction = new Transaction(merchantOrderId.ToString(), customer, payment);
