@@ -32,7 +32,6 @@ namespace Duarti.Maverick.Cielo.Exceptions
                 }
 
                 return JsonConvert.DeserializeObject<Error[]>(Response.Content);
-
             }
         }
 
