@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Duarti.Maverick.Cielo", "Du
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Duarti.Maverick.CieloTests", "Duarti.Maverick.CieloTests\Duarti.Maverick.CieloTests.csproj", "{F88F8235-A395-4604-9E50-BE375CF00A0D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{204C1E91-74CE-4EE2-9D18-5BD3BD6A1A8E}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,17 +29,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://isaasoft.visualstudio.com/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Duarti.Maverick.Cielo\\Duarti.Maverick.Cielo.csproj
-		SccProjectName1 = Duarti.Maverick.Cielo
-		SccLocalPath1 = Duarti.Maverick.Cielo
-		SccProjectUniqueName2 = Duarti.Maverick.CieloTests\\Duarti.Maverick.CieloTests.csproj
-		SccProjectName2 = Duarti.Maverick.CieloTests
-		SccLocalPath2 = Duarti.Maverick.CieloTests
 	EndGlobalSection
 EndGlobal
