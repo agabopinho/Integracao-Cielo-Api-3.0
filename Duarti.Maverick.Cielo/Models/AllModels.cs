@@ -1,4 +1,4 @@
-﻿using Duarti.Maverick.Cielo.Converters;
+﻿using Cielo.Converters;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace Duarti.Maverick.Cielo.Enums
+namespace Cielo.Enums
 {
     public enum CardBrand
     {
@@ -121,7 +121,7 @@ namespace Duarti.Maverick.Cielo.Enums
     }
 }
 
-namespace Duarti.Maverick.Cielo.Model
+namespace Cielo.Model
 {
     public class Error
     {

@@ -1,4 +1,4 @@
-﻿using Duarti.Maverick.Cielo.Model;
+﻿using Cielo.Model;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Duarti.Maverick.Cielo.Exceptions
+namespace Cielo.Exceptions
 {
     public class CieloApiException : Exception
     {

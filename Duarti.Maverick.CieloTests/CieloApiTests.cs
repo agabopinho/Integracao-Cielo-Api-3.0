@@ -1,13 +1,13 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Duarti.Maverick.Cielo;
+using Cielo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Duarti.Maverick.Cielo.Model;
-using Duarti.Maverick.Cielo.Configurations;
+using Cielo.Model;
+using Cielo.Configurations;
 
-namespace Duarti.Maverick.Cielo.Tests
+namespace Cielo.Tests
 {
     [TestClass()]
     public class CieloApiTests

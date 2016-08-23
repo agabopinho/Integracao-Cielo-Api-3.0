@@ -1,4 +1,4 @@
-﻿using Duarti.Maverick.Cielo.Converters;
+﻿using Cielo.Converters;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using RestSharp.Serializers;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Duarti.Maverick.Cielo.Serializers
+namespace Cielo.Serializers
 {
     /// <summary>
     /// Default JSON serializer for request bodies

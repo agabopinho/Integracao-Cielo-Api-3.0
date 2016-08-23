@@ -4,11 +4,11 @@ using RestSharp;
 using System;
 using System.Net;
 using System.Linq;
-using Duarti.Maverick.Cielo.Serializers;
-using Duarti.Maverick.Cielo.Exceptions;
-using Duarti.Maverick.Cielo.Configurations;
+using Cielo.Serializers;
+using Cielo.Exceptions;
+using Cielo.Configurations;
 
-namespace Duarti.Maverick.Cielo
+namespace Cielo
 {
     public abstract class CieloBaseApi
     {

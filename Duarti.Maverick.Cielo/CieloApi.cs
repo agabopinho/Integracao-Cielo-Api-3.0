@@ -1,12 +1,12 @@
-﻿using Duarti.Maverick.Cielo.Configurations;
-using Duarti.Maverick.Cielo.Model;
+﻿using Cielo.Configurations;
+using Cielo.Model;
 using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Duarti.Maverick.Cielo
+namespace Cielo
 {
     public class CieloApi : CieloBaseApi
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Duarti.Maverick.Cielo.Configurations
+namespace Cielo.Configurations
 {
     public interface IEnvironment
     {
