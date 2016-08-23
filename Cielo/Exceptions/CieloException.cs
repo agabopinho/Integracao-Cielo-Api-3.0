@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace Cielo.Exceptions
 {
-    public class CieloApiException : Exception
+    public class CieloException : Exception
     {
-        public CieloApiException(string message, Exception innerException)
+        public CieloException(string message, Exception innerException)
             : base(message, innerException)
         {
         }
 
-        public CieloApiException(IRestResponse response)
+        public CieloException(IRestResponse response)
             : base(response.ErrorMessage, response.ErrorException)
         {
             this.Response = response;

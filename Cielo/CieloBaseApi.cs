@@ -48,7 +48,7 @@ namespace Cielo
             if (!ValidStatusCodes.Contains(response.StatusCode) ||
                 response.ResponseStatus != ResponseStatus.Completed)
             {
-                var exception = new CieloApiException(response);
+                var exception = new CieloException(response);
 
                 // TODO: log errors
 

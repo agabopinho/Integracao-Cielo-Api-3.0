@@ -63,7 +63,7 @@
     <Compile Include="Configurations\CieloEnvironment.cs" />
     <Compile Include="Configurations\IMerchant.cs" />
     <Compile Include="Configurations\Merchant.cs" />
-    <Compile Include="Exceptions\CieloApiException.cs" />
+    <Compile Include="Exceptions\CieloException.cs" />
     <Compile Include="CieloBaseApi.cs" />
     <Compile Include="Configurations\IEnvironment.cs" />
     <Compile Include="Configurations\SandboxCreditCard.cs" />

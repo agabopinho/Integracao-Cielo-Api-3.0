@@ -61,7 +61,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Duarti.Maverick.Cielo\Cielo.csproj">
+    <ProjectReference Include="..\Cielo\Cielo.csproj">
       <Project>{86182F72-E955-4D07-96CD-37C02CD2D941}</Project>
       <Name>Cielo</Name>
     </ProjectReference>
