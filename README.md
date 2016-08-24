@@ -41,5 +41,4 @@ Git da Cielo:
 https://github.com/DeveloperCielo
 
 Outras documentações em Cielo Developers:
-https://www.cielo.com.br/desenvolvedores
-http://bit.ly/2bO2Cw2
+https://www.cielo.com.br/desenvolvedores e http://bit.ly/2bO2Cw2
