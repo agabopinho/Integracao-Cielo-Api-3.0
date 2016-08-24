@@ -13,21 +13,44 @@ namespace Cielo.Tests
     public class CieloApiTests
     {
         private CieloApi api;
+        private DateTime validExpirationDate;
+        private DateTime invalidExpirationDate;
 
         [TestInitialize]
         public void ConfigEnvironment()
         {
             api = new CieloApi(CieloEnvironment.Sandbox, Merchant.Sandbox);
+            validExpirationDate = new DateTime(DateTime.Now.Year + 1, 12, 1);
+            invalidExpirationDate = new DateTime(DateTime.Now.Year - 1, 12, 1);
         }
 
         [TestMethod()]
         public void CriaUmaTransacaoAutorizadaSemCapturaResultadoAutorizada()
         {
+            var customer = new Customer(name: "Fulano da Silva");
+
+            var creditCard = new CreditCard(
+                cardNumber: SandboxCreditCard.Authorized1, 
+                holder: "Teste Holder", 
+                expirationDate: validExpirationDate, 
+                securityCode: "123", 
+                brand: Enums.CardBrand.Visa);
+
+            var payment = new Payment(
+                amount: 15700, 
+                currency: Enums.Currency.BRL, 
+                installments: 1, 
+                capture: false, 
+                softDescriptor: ".Net Test Project", 
+                creditCard: creditCard);
+
+            /* store order number */
             var merchantOrderId = new Random().Next();
-            var customer = new Customer("Fulano da Silva");
-            var creditCard = new CreditCard(SandboxCreditCard.Authorized1, "Teste Holder", new DateTime(DateTime.Now.Year + 1, 12, 1), "123", Enums.CardBrand.Visa);
-            var payment = new Payment(15700, Enums.Currency.BRL, 1, false, ".Net Test Project", creditCard);
-            var transaction = new Transaction(merchantOrderId.ToString(), customer, payment);
+
+            var transaction = new Transaction(
+                merchantOrderId: merchantOrderId.ToString(), 
+                customer: customer, 
+                payment: payment);
 
             var returnTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
 
