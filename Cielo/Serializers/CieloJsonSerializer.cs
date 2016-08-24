@@ -17,7 +17,7 @@ namespace Cielo.Serializers
     /// </summary>
     public class CieloJsonSerializer : ISerializer
     {
-        private Newtonsoft.Json.JsonSerializer Serializer { get; set; }
+        protected Newtonsoft.Json.JsonSerializer Serializer { get; set; }
 
         /// <summary>
         /// Default serializer
@@ -48,26 +48,26 @@ namespace Cielo.Serializers
         /// <summary>
         /// Unused for JSON Serialization
         /// </summary>
-        public string DateFormat { get; set; }
+        public virtual string DateFormat { get; set; }
         /// <summary>
         /// Unused for JSON Serialization
         /// </summary>
-        public string RootElement { get; set; }
+        public virtual string RootElement { get; set; }
         /// <summary>
         /// Unused for JSON Serialization
         /// </summary>
-        public string Namespace { get; set; }
+        public virtual string Namespace { get; set; }
         /// <summary>
         /// Content type for serialized content
         /// </summary>
-        public string ContentType { get; set; }
+        public virtual string ContentType { get; set; }
 
         /// <summary>
         /// Serialize the object as JSON
         /// </summary>
         /// <param name="obj">Object to serialize</param>
         /// <returns>JSON as String</returns>
-        public string Serialize(object obj)
+        public virtual string Serialize(object obj)
         {
             using (var stringWriter = new StringWriter())
             using (var jsonTextWriter = new JsonTextWriter(stringWriter))

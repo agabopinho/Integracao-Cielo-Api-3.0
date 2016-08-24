@@ -5,6 +5,7 @@ Projeto em .NET para integração com a API de pagamento Cielo API 3.0.
 Exemplo de uso em ambiente SANDBOX:
 
 ```
+/* api instance */
 var api = new CieloApi(CieloEnvironment.Sandbox, Merchant.Sandbox);
 
 /* customer */

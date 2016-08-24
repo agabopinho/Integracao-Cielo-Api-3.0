@@ -8,10 +8,10 @@ using System.Text;
 
 namespace Cielo
 {
-    public class CieloApi : CieloBaseApi
+    public class CieloApi : CieloBaseApi, ICieloApi
     {
-        public IMerchant Merchant { get; }
-        public IEnvironment Environment { get; }
+        public virtual IMerchant Merchant { get; }
+        public virtual IEnvironment Environment { get; }
 
         public CieloApi(IEnvironment environment, IMerchant merchant)
         {
@@ -28,7 +28,7 @@ namespace Cielo
         {
         }
 
-        public Transaction CreateTransaction(Guid requestId, Transaction transaction)
+        public virtual Transaction CreateTransaction(Guid requestId, Transaction transaction)
         {
             var client = CreateClient(Environment.TransactionUrl, Merchant);
             var request = CreateRequest(requestId, "/1/sales/", Method.POST);

@@ -7,8 +7,8 @@
     <ProjectGuid>{86182F72-E955-4D07-96CD-37C02CD2D941}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Duarti.Maverick.Cielo</RootNamespace>
-    <AssemblyName>Duarti.Maverick.Cielo</AssemblyName>
+    <RootNamespace>Cielo</RootNamespace>
+    <AssemblyName>Cielo</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
@@ -69,6 +69,7 @@
     <Compile Include="CieloBaseApi.cs" />
     <Compile Include="Configurations\IEnvironment.cs" />
     <Compile Include="Configurations\SandboxCreditCard.cs" />
+    <Compile Include="ICieloApi.cs" />
     <Compile Include="Models\Link.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Customer.cs" />

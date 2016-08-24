@@ -12,7 +12,7 @@ namespace Cielo.Tests
     [TestClass()]
     public class CieloApiTests
     {
-        private CieloApi api;
+        private ICieloApi api;
         private DateTime validExpirationDate;
         private DateTime invalidExpirationDate;
 
@@ -50,39 +50,6 @@ namespace Cielo.Tests
             var transaction = new Transaction(
                 merchantOrderId: merchantOrderId.ToString(), 
                 customer: customer, 
-                payment: payment);
-
-            var returnTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
-
-            Assert.IsTrue(returnTransaction.Payment.Status == Enums.Status.Authorized, "Transação não foi autorizada");
-        }
-
-        [TestMethod()]
-        public void CriaUmaTransacaoComCapturaAutorizadaComParcelaMenorQueCincoReaisResultadoNaoAutorizada()
-        {
-            var customer = new Customer(name: "Fulano da Silva");
-
-            var creditCard = new CreditCard(
-                cardNumber: SandboxCreditCard.Authorized1,
-                holder: "Teste Holder",
-                expirationDate: validExpirationDate,
-                securityCode: "123",
-                brand: Enums.CardBrand.Visa);
-
-            var payment = new Payment(
-                amount: 5,
-                currency: Enums.Currency.BRL,
-                installments: 1,
-                capture: true,
-                softDescriptor: ".Net Test Project",
-                creditCard: creditCard);
-
-            /* store order number */
-            var merchantOrderId = new Random().Next();
-
-            var transaction = new Transaction(
-                merchantOrderId: merchantOrderId.ToString(),
-                customer: customer,
                 payment: payment);
 
             var returnTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);

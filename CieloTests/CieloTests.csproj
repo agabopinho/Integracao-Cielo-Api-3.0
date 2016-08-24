@@ -6,8 +6,8 @@
     <ProjectGuid>{F88F8235-A395-4604-9E50-BE375CF00A0D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Duarti.Maverick.CieloTests</RootNamespace>
-    <AssemblyName>Duarti.Maverick.CieloTests</AssemblyName>
+    <RootNamespace>CieloTests</RootNamespace>
+    <AssemblyName>CieloTests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

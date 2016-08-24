@@ -12,14 +12,14 @@ namespace Cielo
 {
     public abstract class CieloBaseApi
     {
-        internal static readonly HttpStatusCode[] ValidStatusCodes = new[]
+        protected static readonly HttpStatusCode[] ValidStatusCodes = new[]
         {
             HttpStatusCode.OK,
             HttpStatusCode.Created,
             HttpStatusCode.Accepted
         };
 
-        protected RestClient CreateClient(string baseUrl, IMerchant merchant)
+        protected virtual RestClient CreateClient(string baseUrl, IMerchant merchant)
         {
             var client = new RestClient(baseUrl);
 
@@ -31,7 +31,7 @@ namespace Cielo
             return client;
         }
 
-        protected IRestRequest CreateRequest(Guid requestId, string resource, Method method)
+        protected virtual IRestRequest CreateRequest(Guid requestId, string resource, Method method)
         {
             var request = new RestRequest(resource, method)
             {
@@ -43,7 +43,7 @@ namespace Cielo
             return request;
         }
 
-        protected void VerifyResponse(IRestResponse response)
+        protected virtual void VerifyResponse(IRestResponse response)
         {
             if (!ValidStatusCodes.Contains(response.StatusCode) ||
                 response.ResponseStatus != ResponseStatus.Completed)
