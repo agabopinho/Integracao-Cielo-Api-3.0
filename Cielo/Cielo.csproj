@@ -63,6 +63,7 @@
     <Compile Include="Configurations\CieloEnvironment.cs" />
     <Compile Include="Configurations\IMerchant.cs" />
     <Compile Include="Configurations\Merchant.cs" />
+    <Compile Include="Converters\CieloDecimalConverter.cs" />
     <Compile Include="Enums\AllEnums.cs" />
     <Compile Include="Exceptions\CieloException.cs" />
     <Compile Include="CieloBaseApi.cs" />
