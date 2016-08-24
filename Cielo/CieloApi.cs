@@ -1,5 +1,5 @@
 ﻿using Cielo.Configurations;
-using Cielo.Model;
+using Cielo.Models;
 using RestSharp;
 using System;
 using System.Collections.Generic;

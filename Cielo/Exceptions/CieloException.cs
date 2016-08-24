@@ -1,4 +1,4 @@
-﻿using Cielo.Model;
+﻿using Cielo.Models;
 using Newtonsoft.Json;
 using RestSharp;
 using System;

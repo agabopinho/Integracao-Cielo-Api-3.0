@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Cielo.Model;
+using Cielo.Models;
 using Cielo.Configurations;
 
 namespace Cielo.Tests
