@@ -19,6 +19,11 @@ namespace Cielo
             HttpStatusCode.Accepted
         };
 
+        protected static void PreConfigurationTls12()
+        {
+            ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
+        }
+
         protected virtual RestClient CreateClient(string baseUrl, IMerchant merchant)
         {
             var client = new RestClient(baseUrl);

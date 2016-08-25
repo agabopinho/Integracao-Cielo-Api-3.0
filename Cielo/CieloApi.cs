@@ -17,6 +17,8 @@ namespace Cielo
         {
             this.Environment = environment;
             this.Merchant = merchant;
+
+            PreConfigurationTls12();
         }
 
         /// <summary>
