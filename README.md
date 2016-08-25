@@ -2,7 +2,7 @@
 
 Projeto em .NET para integração com a API de pagamento Cielo API 3.0.
 
-### Exemplo de uso em ambiente SANDBOX: 
+### Exemplo de uso em ambiente sandbox
 - Transação com captura
 ```
 /* api instance */
@@ -53,7 +53,7 @@ https://github.com/DeveloperCielo
 Outras documentações em Cielo Developers:
 https://www.cielo.com.br/desenvolvedores e http://bit.ly/2bO2Cw2
 
-### Em breve:
+### Em breve
 
 - Captura: para transações que foram apenas autorizadas
 - Cancelamento total e parcial: para transações capturadas – cancelamento total e parcial, para autorizações – apenas cancelamento total.
