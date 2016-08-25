@@ -2,8 +2,8 @@
 
 Projeto em .NET para integração com a API de pagamento Cielo API 3.0.
 
-Exemplo de uso em ambiente SANDBOX:
-
+##### Exemplo de uso em ambiente SANDBOX: 
+- Transação com captura
 ```
 /* api instance */
 var api = new CieloApi(CieloEnvironment.Sandbox, Merchant.Sandbox);
@@ -24,7 +24,7 @@ var payment = new Payment(
     amount: 15700, 
     currency: Enums.Currency.BRL, 
     installments: 1, 
-    capture: false, 
+    capture: true, 
     softDescriptor: ".Net Test Project", 
     creditCard: creditCard);
 
@@ -52,3 +52,8 @@ https://github.com/DeveloperCielo
 
 Outras documentações em Cielo Developers:
 https://www.cielo.com.br/desenvolvedores e http://bit.ly/2bO2Cw2
+
+Em breve:
+
+Captura: para transações que foram apenas autorizadas
+Cancelamento total e parcial: para transações capturadas – cancelamento total e parcial, para autorizações – apenas cancelamento total.
