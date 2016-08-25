@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Duarti.Maverick.Cielo.Converters
+namespace Cielo.Converters
 {
     public class CieloDecimalConverter : CustomCreationConverter<decimal>
     {
