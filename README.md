@@ -2,6 +2,13 @@
 
 Projeto em .NET para integração com a API de pagamento Cielo API 3.0.
 
+### Métodos
+
+- CreateTransaction
+- GetTransaction
+- CancellationTransaction
+- CaptureTransaction
+
 ### Exemplo de uso em ambiente sandbox
 - Transação com captura
 ```
@@ -52,8 +59,3 @@ https://github.com/DeveloperCielo
 
 Outras documentações em Cielo Developers:
 https://www.cielo.com.br/desenvolvedores e http://bit.ly/2bO2Cw2
-
-### Em breve
-
-- Captura: para transações que foram apenas autorizadas
-- Cancelamento total e parcial: para transações capturadas – cancelamento total e parcial, para autorizações – apenas cancelamento total.
