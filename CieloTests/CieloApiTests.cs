@@ -25,7 +25,7 @@ namespace Cielo.Tests
         }
 
         [TestMethod()]
-        public void CriaUmaTransacaoAutorizadaSemCapturaResultadoAutorizada()
+        public void CriaUmaAutorizacaoResultadoAutorizada()
         {
             var customer = new Customer(name: "Fulano da Silva");
 
@@ -58,7 +58,7 @@ namespace Cielo.Tests
         }
 
         [TestMethod()]
-        public void CriaUmaTransacaoAutorizadaComCapturaResultadoPagamentoConfirmado()
+        public void CriaUmaTransacaoCapturadaResultadoPagamentoConfirmado()
         {
             var customer = new Customer(name: "Fulano da Silva");
 
@@ -91,7 +91,7 @@ namespace Cielo.Tests
         }
 
         [TestMethod()]
-        public void CriaUmaTransacaoComCartaoNaoAutorizadaResultadoNaoAutorizada()
+        public void CriaUmaTransacaoCapturadaComCartaoNaoAutorizadaResultadoNaoAutorizada()
         {
             var customer = new Customer(name: "Fulano da Silva");
 
@@ -106,7 +106,7 @@ namespace Cielo.Tests
                 amount: 15700,
                 currency: Enums.Currency.BRL,
                 installments: 1,
-                capture: false,
+                capture: true,
                 softDescriptor: ".Net Test Project",
                 creditCard: creditCard);
 
@@ -124,7 +124,7 @@ namespace Cielo.Tests
         }
 
         [TestMethod()]
-        public void CriaUmaTransacaoComCartaoBloqueadoResultadoNaoAutorizada()
+        public void CriaUmaTransacaoCapturadaComCartaoBloqueadoResultadoNaoAutorizada()
         {
             var customer = new Customer(name: "Fulano da Silva");
 
@@ -139,7 +139,7 @@ namespace Cielo.Tests
                 amount: 15700,
                 currency: Enums.Currency.BRL,
                 installments: 1,
-                capture: false,
+                capture: true,
                 softDescriptor: ".Net Test Project",
                 creditCard: creditCard);
 
@@ -157,7 +157,7 @@ namespace Cielo.Tests
         }
 
         [TestMethod()]
-        public void CriaUmaTransacaoComCartaoCanceladoResultadoNaoAutorizada()
+        public void CriaUmaTransacaoCapturadaComCartaoCanceladoResultadoNaoAutorizada()
         {
             var customer = new Customer(name: "Fulano da Silva");
 
@@ -172,7 +172,7 @@ namespace Cielo.Tests
                 amount: 15700,
                 currency: Enums.Currency.BRL,
                 installments: 1,
-                capture: false,
+                capture: true,
                 softDescriptor: ".Net Test Project",
                 creditCard: creditCard);
 
@@ -190,7 +190,7 @@ namespace Cielo.Tests
         }
 
         [TestMethod()]
-        public void CriaUmaTransacaoComCartaoExpiradoResultadoNaoAutorizada()
+        public void CriaUmaTransacaoCapturadaComCartaoExpiradoResultadoNaoAutorizada()
         {
             var customer = new Customer(name: "Fulano da Silva");
 
@@ -205,7 +205,7 @@ namespace Cielo.Tests
                 amount: 15700,
                 currency: Enums.Currency.BRL,
                 installments: 1,
-                capture: false,
+                capture: true,
                 softDescriptor: ".Net Test Project",
                 creditCard: creditCard);
 
@@ -223,7 +223,7 @@ namespace Cielo.Tests
         }
 
         [TestMethod()]
-        public void CriaUmaTransacaoComCartaoComProblemasResultadoNaoAutorizada()
+        public void CriaUmaTransacaoCapturadaComCartaoComProblemasResultadoNaoAutorizada()
         {
             var customer = new Customer(name: "Fulano da Silva");
 
@@ -238,7 +238,7 @@ namespace Cielo.Tests
                 amount: 15700,
                 currency: Enums.Currency.BRL,
                 installments: 1,
-                capture: false,
+                capture: true,
                 softDescriptor: ".Net Test Project",
                 creditCard: creditCard);
 
@@ -256,12 +256,45 @@ namespace Cielo.Tests
         }
 
         [TestMethod()]
-        public void CriaUmaTransacaoComCartaoDeTimeOutInternoCieloResultadoNaoAutorizada()
+        public void CriaUmaTransacaoCapturadaComCartaoDeTimeOutInternoCieloResultadoNaoAutorizada()
         {
             var customer = new Customer(name: "Fulano da Silva");
 
             var creditCard = new CreditCard(
                 cardNumber: SandboxCreditCard.NotAuthorizedTimeOut,
+                holder: "Teste Holder",
+                expirationDate: validExpirationDate,
+                securityCode: "123",
+                brand: Enums.CardBrand.Visa);
+
+            var payment = new Payment(
+                amount: 15700,
+                currency: Enums.Currency.BRL,
+                installments: 1,
+                capture: true,
+                softDescriptor: ".Net Test Project",
+                creditCard: creditCard);
+
+            /* store order number */
+            var merchantOrderId = new Random().Next();
+
+            var transaction = new Transaction(
+                merchantOrderId: merchantOrderId.ToString(),
+                customer: customer,
+                payment: payment);
+
+            var returnTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
+
+            Assert.IsTrue(returnTransaction.Payment.Status == Enums.Status.Denied, "Transação não foi negada");
+        }
+
+        [TestMethod()]
+        public void CriaUmaAutorizacaoDepoisCapturaResultadoPagamentoConfirmado()
+        {
+            var customer = new Customer(name: "Fulano da Silva");
+
+            var creditCard = new CreditCard(
+                cardNumber: SandboxCreditCard.Authorized1,
                 holder: "Teste Holder",
                 expirationDate: validExpirationDate,
                 securityCode: "123",
@@ -283,9 +316,113 @@ namespace Cielo.Tests
                 customer: customer,
                 payment: payment);
 
-            var returnTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
+            var createTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
+            var captureTransaction = api.CaptureTransaction(Guid.NewGuid(), createTransaction.Payment.PaymentId.Value);
 
-            Assert.IsTrue(returnTransaction.Payment.Status == Enums.Status.Denied, "Transação não foi negada");
+            Assert.IsTrue(captureTransaction.Status == Enums.Status.PaymentConfirmed, "Captura não teve pagamento confirmado");
+        }
+
+        [TestMethod()]
+        public void CriaUmaAutorizacaoDepoisCapturaDepoisCancelaResultadoCancelado()
+        {
+            var customer = new Customer(name: "Fulano da Silva");
+
+            var creditCard = new CreditCard(
+                cardNumber: SandboxCreditCard.Authorized1,
+                holder: "Teste Holder",
+                expirationDate: validExpirationDate,
+                securityCode: "123",
+                brand: Enums.CardBrand.Visa);
+
+            var payment = new Payment(
+                amount: 15700,
+                currency: Enums.Currency.BRL,
+                installments: 1,
+                capture: false,
+                softDescriptor: ".Net Test Project",
+                creditCard: creditCard);
+
+            /* store order number */
+            var merchantOrderId = new Random().Next();
+
+            var transaction = new Transaction(
+                merchantOrderId: merchantOrderId.ToString(),
+                customer: customer,
+                payment: payment);
+
+            var createTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
+            var captureTransaction = api.CaptureTransaction(Guid.NewGuid(), createTransaction.Payment.PaymentId.Value);
+            var cancelationTransaction = api.CancellationTransaction(Guid.NewGuid(), createTransaction.Payment.PaymentId.Value);
+
+            Assert.IsTrue(cancelationTransaction.Status == Enums.Status.Voided, "Cancelamento não teve sucesso");
+        }
+
+        [TestMethod()]
+        public void CriaUmaAutorizacaoComTokenizacaoDoCartaoResultadoComToken()
+        {
+            var customer = new Customer(name: "Fulano da Silva");
+
+            var creditCard = new CreditCard(
+                cardNumber: SandboxCreditCard.Authorized2,
+                holder: "Teste Holder",
+                expirationDate: validExpirationDate,
+                securityCode: "123",
+                brand: Enums.CardBrand.Visa,
+                saveCard: true);
+
+            var payment = new Payment(
+                amount: 15700,
+                currency: Enums.Currency.BRL,
+                installments: 1,
+                capture: false,
+                softDescriptor: ".Net Test Project",
+                creditCard: creditCard);
+
+            /* store order number */
+            var merchantOrderId = new Random().Next();
+
+            var transaction = new Transaction(
+                merchantOrderId: merchantOrderId.ToString(),
+                customer: customer,
+                payment: payment);
+
+            var createTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
+
+            Assert.IsNotNull(createTransaction.Payment.CreditCard.CardToken, "Não foi criado o token");  
+        }
+
+        [TestMethod()]
+        public void CriaUmaTransacaoCapturadaComTokenizacaoDoCartaoResultadoComToken()
+        {
+            var customer = new Customer(name: "Fulano da Silva");
+
+            var creditCard = new CreditCard(
+                cardNumber: SandboxCreditCard.Authorized2,
+                holder: "Teste Holder",
+                expirationDate: validExpirationDate,
+                securityCode: "123",
+                brand: Enums.CardBrand.Visa,
+                saveCard: true);
+
+            var payment = new Payment(
+                amount: 15700,
+                currency: Enums.Currency.BRL,
+                installments: 1,
+                capture: true,
+                softDescriptor: ".Net Test Project",
+                creditCard: creditCard);
+
+            /* store order number */
+            var merchantOrderId = new Random().Next();
+
+            var transaction = new Transaction(
+                merchantOrderId: merchantOrderId.ToString(),
+                customer: customer,
+                payment: payment);
+
+            var createTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
+
+            Assert.IsNotNull(createTransaction.Payment.CreditCard.CardToken, "Não foi criado o token");
         }
     }
 }

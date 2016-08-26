@@ -76,6 +76,7 @@
     <Compile Include="Models\CreditCard.cs" />
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\RecurrentPayment.cs" />
+    <Compile Include="Models\ReturnStatus.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Serializers\CieloJsonSerializer.cs" />
     <Compile Include="Converters\CreditCardExpirationDateConverter.cs" />

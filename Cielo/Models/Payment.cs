@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Cielo.Models
 {
-    public class Payment
+    public class Payment : ReturnStatus
     {
         public Payment()
         {
@@ -53,10 +53,6 @@ namespace Cielo.Models
         [JsonConverter(typeof(StringEnumConverter))]
         public Enums.Currency? Currency { get; set; }
         public string Country { get; set; }
-        public string ReturnCode { get; set; }
-        public string ReturnMessage { get; set; }
-        public Enums.Status? Status { get; set; }
-        public List<Link> Links { get; set; }
         public List<object> ExtraDataCollection { get; set; }
         public string ExpirationDate { get; set; }
         public string Url { get; set; }

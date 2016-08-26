@@ -43,5 +43,62 @@ namespace Cielo
 
             return response.Data;
         }
+
+        public virtual Transaction GetTransaction(Guid requestId, Guid paymentId)
+        {
+            var client = CreateClient(Environment.QueryUrl, Merchant);
+            var request = CreateRequest(requestId, "/1/sales/{PaymentId}", Method.GET);
+
+            request.AddParameter("PaymentId", paymentId, ParameterType.UrlSegment);
+
+            var response = client.Get<Transaction>(request);
+
+            VerifyResponse(response);
+
+            return response.Data;
+        }
+
+        public virtual ReturnStatus CancellationTransaction(Guid requestId, Guid paymentId, int? amount = default(int?))
+        {
+            var client = CreateClient(Environment.TransactionUrl, Merchant);
+            var request = CreateRequest(requestId, "/1/sales/{PaymentId}/void", Method.PUT);
+
+            request.AddParameter("PaymentId", paymentId, ParameterType.UrlSegment);
+
+            if (amount.HasValue)
+            {
+                request.AddParameter("Amount", amount, ParameterType.QueryString);
+            }
+
+            var response = client.Put<ReturnStatus>(request);
+
+            VerifyResponse(response);
+
+            return response.Data;
+        }
+
+        public virtual ReturnStatus CaptureTransaction(Guid requestId, Guid paymentId, int? amount = default(int?), int? serviceTaxAmount = default(int?))
+        {
+            var client = CreateClient(Environment.TransactionUrl, Merchant);
+            var request = CreateRequest(requestId, "/1/sales/{PaymentId}/capture", Method.PUT);
+
+            request.AddParameter("PaymentId", paymentId, ParameterType.UrlSegment);
+
+            if (amount.HasValue)
+            {
+                request.AddParameter("Amount", amount, ParameterType.QueryString);
+            }
+
+            if (serviceTaxAmount.HasValue)
+            {
+                request.AddParameter("SeviceTaxAmount", serviceTaxAmount, ParameterType.QueryString);
+            }
+
+            var response = client.Put<ReturnStatus>(request);
+
+            VerifyResponse(response);
+
+            return response.Data;
+        }
     }
 }
