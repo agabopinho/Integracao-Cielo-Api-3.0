@@ -28,12 +28,7 @@ namespace Cielo.Serializers
 
             Serializer = Newtonsoft.Json.JsonSerializer.Create();
 
-            Serializer.MissingMemberHandling = MissingMemberHandling.Ignore;
-            Serializer.NullValueHandling = NullValueHandling.Include;
-            Serializer.DefaultValueHandling = DefaultValueHandling.Include;
-
-            Serializer.Converters.Add(new StringEnumConverter(camelCaseText: true));
-            Serializer.Converters.Add(new CreditCardExpirationDateConverter());
+            Serializer.NullValueHandling = NullValueHandling.Ignore;
         }
 
         /// <summary>

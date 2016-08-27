@@ -63,12 +63,13 @@
     <Compile Include="Configurations\CieloEnvironment.cs" />
     <Compile Include="Configurations\IMerchant.cs" />
     <Compile Include="Configurations\Merchant.cs" />
-    <Compile Include="Converters\CieloDecimalConverter.cs" />
+    <Compile Include="Converters\CieloDecimalToIntegerConverter.cs" />
     <Compile Include="Enums\AllEnums.cs" />
     <Compile Include="Exceptions\CieloException.cs" />
     <Compile Include="CieloBaseApi.cs" />
     <Compile Include="Configurations\IEnvironment.cs" />
     <Compile Include="Configurations\SandboxCreditCard.cs" />
+    <Compile Include="Helper\NumberHelper.cs" />
     <Compile Include="ICieloApi.cs" />
     <Compile Include="Models\Link.cs" />
     <Compile Include="Models\Address.cs" />

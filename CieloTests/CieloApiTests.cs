@@ -37,7 +37,7 @@ namespace Cielo.Tests
                 brand: Enums.CardBrand.Visa);
 
             var payment = new Payment(
-                amount: 15700, 
+                amount: 150.00M, 
                 currency: Enums.Currency.BRL, 
                 installments: 1, 
                 capture: false, 
@@ -103,7 +103,7 @@ namespace Cielo.Tests
                 brand: Enums.CardBrand.Visa);
 
             var payment = new Payment(
-                amount: 15700,
+                amount: 150.00M,
                 currency: Enums.Currency.BRL,
                 installments: 1,
                 capture: true,
@@ -136,7 +136,7 @@ namespace Cielo.Tests
                 brand: Enums.CardBrand.Visa);
 
             var payment = new Payment(
-                amount: 15700,
+                amount: 150.00M,
                 currency: Enums.Currency.BRL,
                 installments: 1,
                 capture: true,
@@ -169,7 +169,7 @@ namespace Cielo.Tests
                 brand: Enums.CardBrand.Visa);
 
             var payment = new Payment(
-                amount: 15700,
+                amount: 150.00M,
                 currency: Enums.Currency.BRL,
                 installments: 1,
                 capture: true,
@@ -202,7 +202,7 @@ namespace Cielo.Tests
                 brand: Enums.CardBrand.Visa);
 
             var payment = new Payment(
-                amount: 15700,
+                amount: 150.00M,
                 currency: Enums.Currency.BRL,
                 installments: 1,
                 capture: true,
@@ -235,7 +235,7 @@ namespace Cielo.Tests
                 brand: Enums.CardBrand.Visa);
 
             var payment = new Payment(
-                amount: 15700,
+                amount: 150.00M,
                 currency: Enums.Currency.BRL,
                 installments: 1,
                 capture: true,
@@ -268,7 +268,7 @@ namespace Cielo.Tests
                 brand: Enums.CardBrand.Visa);
 
             var payment = new Payment(
-                amount: 15700,
+                amount: 150.00M,
                 currency: Enums.Currency.BRL,
                 installments: 1,
                 capture: true,
@@ -301,7 +301,7 @@ namespace Cielo.Tests
                 brand: Enums.CardBrand.Visa);
 
             var payment = new Payment(
-                amount: 15700,
+                amount: 150.00M,
                 currency: Enums.Currency.BRL,
                 installments: 1,
                 capture: false,
@@ -335,7 +335,7 @@ namespace Cielo.Tests
                 brand: Enums.CardBrand.Visa);
 
             var payment = new Payment(
-                amount: 15700,
+                amount: 150.00M,
                 currency: Enums.Currency.BRL,
                 installments: 1,
                 capture: false,
@@ -358,6 +358,40 @@ namespace Cielo.Tests
         }
 
         [TestMethod()]
+        public void CriaUmaAutorizacaoDepoisCapturaParcialResultadoPagamentoAprovado()
+        {
+            var customer = new Customer(name: "Fulano da Silva");
+
+            var creditCard = new CreditCard(
+                cardNumber: SandboxCreditCard.Authorized1,
+                holder: "Teste Holder",
+                expirationDate: validExpirationDate,
+                securityCode: "123",
+                brand: Enums.CardBrand.Visa);
+
+            var payment = new Payment(
+                amount: 150.25M,
+                currency: Enums.Currency.BRL,
+                installments: 1,
+                capture: false,
+                softDescriptor: ".Net Test Project",
+                creditCard: creditCard);
+
+            /* store order number */
+            var merchantOrderId = new Random().Next();
+
+            var transaction = new Transaction(
+                merchantOrderId: merchantOrderId.ToString(),
+                customer: customer,
+                payment: payment);
+
+            var createTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
+            var captureTransaction = api.CaptureTransaction(Guid.NewGuid(), createTransaction.Payment.PaymentId.Value, 25.00M);
+
+            Assert.IsTrue(captureTransaction.Status == Enums.Status.PaymentConfirmed, "Transação não teve pagamento aprovado");
+        }
+
+        [TestMethod()]
         public void CriaUmaAutorizacaoComTokenizacaoDoCartaoResultadoComToken()
         {
             var customer = new Customer(name: "Fulano da Silva");
@@ -371,7 +405,7 @@ namespace Cielo.Tests
                 saveCard: true);
 
             var payment = new Payment(
-                amount: 15700,
+                amount: 157.37M,
                 currency: Enums.Currency.BRL,
                 installments: 1,
                 capture: false,
@@ -405,7 +439,7 @@ namespace Cielo.Tests
                 saveCard: true);
 
             var payment = new Payment(
-                amount: 15700,
+                amount: 150.00M,
                 currency: Enums.Currency.BRL,
                 installments: 1,
                 capture: true,

@@ -11,7 +11,7 @@ namespace Cielo
     {
         Transaction CreateTransaction(Guid requestId, Transaction transaction);
         Transaction GetTransaction(Guid requestId, Guid paymentId);
-        ReturnStatus CancellationTransaction(Guid requestId, Guid paymentId, int? amount = default(int?));
-        ReturnStatus CaptureTransaction(Guid requestId, Guid paymentId, int? amount = default(int?), int? serviceTaxAmount = default(int?));
+        ReturnStatus CancellationTransaction(Guid requestId, Guid paymentId, decimal? amount = null);
+        ReturnStatus CaptureTransaction(Guid requestId, Guid paymentId, decimal? amount = null, decimal? serviceTaxAmount = null);
     }
 }

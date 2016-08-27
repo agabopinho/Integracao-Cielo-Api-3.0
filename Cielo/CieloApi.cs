@@ -1,5 +1,7 @@
 ﻿using Cielo.Configurations;
+using Cielo.Helper;
 using Cielo.Models;
+using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -37,11 +39,11 @@ namespace Cielo
 
             request.AddJsonBody(transaction);
 
-            var response = client.Post<Transaction>(request);
+            var response = client.Execute(request);
 
             VerifyResponse(response);
 
-            return response.Data;
+            return JsonConvert.DeserializeObject<Transaction>(response.Content);
         }
 
         public virtual Transaction GetTransaction(Guid requestId, Guid paymentId)
@@ -51,14 +53,14 @@ namespace Cielo
 
             request.AddParameter("PaymentId", paymentId, ParameterType.UrlSegment);
 
-            var response = client.Get<Transaction>(request);
+            var response = client.Execute(request);
 
             VerifyResponse(response);
 
-            return response.Data;
+            return JsonConvert.DeserializeObject<Transaction>(response.Content);
         }
 
-        public virtual ReturnStatus CancellationTransaction(Guid requestId, Guid paymentId, int? amount = default(int?))
+        public virtual ReturnStatus CancellationTransaction(Guid requestId, Guid paymentId, decimal? amount = null)
         {
             var client = CreateClient(Environment.TransactionUrl, Merchant);
             var request = CreateRequest(requestId, "/1/sales/{PaymentId}/void", Method.PUT);
@@ -67,17 +69,17 @@ namespace Cielo
 
             if (amount.HasValue)
             {
-                request.AddParameter("Amount", amount, ParameterType.QueryString);
+                request.AddParameter("Amount", NumberHelper.DecimalToInteger(amount), ParameterType.QueryString);
             }
 
-            var response = client.Put<ReturnStatus>(request);
+            var response = client.Execute(request);
 
             VerifyResponse(response);
 
-            return response.Data;
+            return JsonConvert.DeserializeObject<ReturnStatus>(response.Content);
         }
 
-        public virtual ReturnStatus CaptureTransaction(Guid requestId, Guid paymentId, int? amount = default(int?), int? serviceTaxAmount = default(int?))
+        public virtual ReturnStatus CaptureTransaction(Guid requestId, Guid paymentId, decimal? amount = null, decimal? serviceTaxAmount = null)
         {
             var client = CreateClient(Environment.TransactionUrl, Merchant);
             var request = CreateRequest(requestId, "/1/sales/{PaymentId}/capture", Method.PUT);
@@ -86,19 +88,19 @@ namespace Cielo
 
             if (amount.HasValue)
             {
-                request.AddParameter("Amount", amount, ParameterType.QueryString);
+                request.AddParameter("Amount", NumberHelper.DecimalToInteger(amount), ParameterType.QueryString);
             }
 
             if (serviceTaxAmount.HasValue)
             {
-                request.AddParameter("SeviceTaxAmount", serviceTaxAmount, ParameterType.QueryString);
+                request.AddParameter("SeviceTaxAmount", NumberHelper.DecimalToInteger(serviceTaxAmount), ParameterType.QueryString);
             }
 
-            var response = client.Put<ReturnStatus>(request);
+            var response = client.Execute(request);
 
             VerifyResponse(response);
 
-            return response.Data;
+            return JsonConvert.DeserializeObject<ReturnStatus>(response.Content);
         }
     }
 }

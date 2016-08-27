@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Cielo.Converters;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace Cielo.Models
         {
         }
 
-        public Payment(int amount, Enums.Currency currency, int installments, bool capture, string softDescriptor, CreditCard creditCard, string country = "BRA", bool authenticate = false)
+        public Payment(decimal amount, Enums.Currency currency, int installments, bool capture, string softDescriptor, CreditCard creditCard, string country = "BRA", bool authenticate = false)
         {
             this.Type = Enums.PaymentType.CreditCard;
             this.Amount = amount;
@@ -27,7 +28,8 @@ namespace Cielo.Models
             this.Authenticate = authenticate;
         }
 
-        public int? ServiceTaxAmount { get; set; }
+        [JsonConverter(typeof(CieloDecimalToIntegerConverter))]
+        public decimal? ServiceTaxAmount { get; set; }
         public int? Installments { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public Enums.Interest? Interest { get; set; }
@@ -46,9 +48,11 @@ namespace Cielo.Models
         public Guid? PaymentId { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public Enums.PaymentType? Type { get; set; }
-        public int? Amount { get; set; }
+        [JsonConverter(typeof(CieloDecimalToIntegerConverter))]
+        public decimal? Amount { get; set; }
         public DateTime? ReceivedDate { get; set; }
-        public int? CapturedAmount { get; set; }
+        [JsonConverter(typeof(CieloDecimalToIntegerConverter))]
+        public decimal? CapturedAmount { get; set; }
         public DateTime? CapturedDate { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public Enums.Currency? Currency { get; set; }
