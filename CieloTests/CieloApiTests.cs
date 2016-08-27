@@ -458,5 +458,41 @@ namespace Cielo.Tests
 
             Assert.IsNotNull(createTransaction.Payment.CreditCard.CardToken, "Não foi criado o token");
         }
+
+        [TestMethod()]
+        public void CriaUmaTransacaoRecorrenteResultadoPagamentoAprovado()
+        {
+            var customer = new Customer(name: "Fulano da Silva");
+
+            var creditCard = new CreditCard(
+                cardNumber: SandboxCreditCard.Authorized2,
+                holder: "Teste Holder",
+                expirationDate: validExpirationDate,
+                securityCode: "123",
+                brand: Enums.CardBrand.Visa,
+                saveCard: true);
+
+            var recurrentPayment = new RecurrentPayment(
+                interval: Enums.Interval.Bimonthly,
+                endDate: DateTime.Now.AddMonths(6));
+
+            var payment = new Payment(
+                amount: 150.00M,
+                currency: Enums.Currency.BRL,
+                installments: 1,
+                softDescriptor: ".Net Test Project",
+                creditCard: creditCard,
+                recurrentPayment: recurrentPayment);
+
+            /* store order number */
+            var merchantOrderId = new Random().Next();
+
+            var transaction = new Transaction(
+                merchantOrderId: merchantOrderId.ToString(),
+                customer: customer,
+                payment: payment);
+
+            var createTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
+        }
     }
 }

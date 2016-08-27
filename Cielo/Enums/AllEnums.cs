@@ -104,7 +104,7 @@ namespace Cielo.Enums
         ByMerchant
     }
 
-    public enum RecurrentPaymentInterval
+    public enum Interval
     {
         [EnumMember(Value = "Monthly")]
         Monthly,

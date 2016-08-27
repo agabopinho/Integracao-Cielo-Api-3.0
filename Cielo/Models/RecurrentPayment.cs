@@ -15,14 +15,14 @@ namespace Cielo.Models
         {
         }
 
-        public RecurrentPayment(Enums.RecurrentPaymentInterval interval, DateTime endDate)
+        public RecurrentPayment(Enums.Interval interval, DateTime endDate)
         {
             this.Interval = interval;
             this.EndDate = endDate;
             this.AuthorizeNow = true;
         }
 
-        public RecurrentPayment(Enums.RecurrentPaymentInterval interval, DateTime startDate, DateTime endDate)
+        public RecurrentPayment(Enums.Interval interval, DateTime startDate, DateTime endDate)
         {
             this.Interval = interval;
             this.StartDate = startDate;
@@ -39,7 +39,7 @@ namespace Cielo.Models
         [JsonConverter(typeof(DateConverter))]
         public DateTime? NextRecurrency { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
-        public Enums.RecurrentPaymentInterval Interval { get; set; }
+        public Enums.Interval Interval { get; set; }
         public Link Link { get; set; }
     }
 }
