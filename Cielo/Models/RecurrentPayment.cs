@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Cielo.Models
 {
-    public class RecurrentPayment
+    public class RecurrentPayment 
     {
         public RecurrentPayment()
         {
@@ -24,6 +24,11 @@ namespace Cielo.Models
 
         public RecurrentPayment(Enums.Interval interval, DateTime startDate, DateTime endDate)
         {
+            if (startDate.Date <= DateTime.Now.Date)
+            {
+                throw new ArgumentException("startDate: the starting date must be in the future");
+            }
+
             this.Interval = interval;
             this.StartDate = startDate;
             this.EndDate = endDate;
@@ -41,5 +46,7 @@ namespace Cielo.Models
         [JsonConverter(typeof(StringEnumConverter))]
         public Enums.Interval Interval { get; set; }
         public Link Link { get; set; }
+        public string ReasonCode { get; set; }
+        public string ReasonMessage { get; set; }
     }
 }
