@@ -15,7 +15,7 @@ namespace Cielo.Models
         {
         }
 
-        public Payment(decimal amount, Enums.Currency currency, int installments, bool capture, string softDescriptor, CreditCard creditCard, string country = "BRA", bool authenticate = false)
+        public Payment(decimal amount, Enums.Currency currency, int installments, bool capture, string softDescriptor, CreditCard creditCard, string country = Enums.Country.BRA)
         {
             this.Type = Enums.PaymentType.CreditCard;
             this.Amount = amount;
@@ -25,7 +25,18 @@ namespace Cielo.Models
             this.SoftDescriptor = softDescriptor;
             this.CreditCard = creditCard;
             this.Country = country;
-            this.Authenticate = authenticate;
+        }
+
+        public Payment(decimal amount, Enums.Currency currency, int installments, string softDescriptor, CreditCard creditCard, RecurrentPayment recurrentPayment, string country = Enums.Country.BRA)
+        {
+            this.Type = Enums.PaymentType.CreditCard;
+            this.Amount = amount;
+            this.Currency = currency;
+            this.Installments = installments;
+            this.SoftDescriptor = softDescriptor;
+            this.CreditCard = creditCard;
+            this.RecurrentPayment = recurrentPayment;
+            this.Country = country;
         }
 
         [JsonConverter(typeof(CieloDecimalToIntegerConverter))]
