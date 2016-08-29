@@ -5,12 +5,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Cielo.Models
 {
     public class Payment : ReturnStatus
     {
+        private static readonly Regex softDescriptorMatch = new Regex("^[a-zA-Z0-9]?", RegexOptions.Compiled);
+
+        private string softDescriptor;
+
         public Payment()
         {
         }
@@ -52,7 +57,24 @@ namespace Cielo.Models
         public string Tid { get; set; }
         public string ProofOfSale { get; set; }
         public string AuthorizationCode { get; set; }
-        public string SoftDescriptor { get; set; }
+        public string SoftDescriptor
+        {
+            get
+            {
+                return softDescriptor;
+            }
+            set
+            {
+                if (value != null && (
+                    value.Length > 13 ||
+                    !softDescriptorMatch.IsMatch(value)))
+                {
+                    throw new ArgumentException("SoftDescriptor: it has a limit of 13 characters (not special) and no spaces.");
+                }
+
+                softDescriptor = value;
+            }
+        }
         public string ReturnUrl { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public Enums.Provider? Provider { get; set; }

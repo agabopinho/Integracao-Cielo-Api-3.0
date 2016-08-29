@@ -30,26 +30,26 @@ namespace Cielo.Tests
             var customer = new Customer(name: "Fulano da Silva");
 
             var creditCard = new CreditCard(
-                cardNumber: SandboxCreditCard.Authorized1, 
-                holder: "Teste Holder", 
-                expirationDate: validExpirationDate, 
-                securityCode: "123", 
+                cardNumber: SandboxCreditCard.Authorized1,
+                holder: "Teste Holder",
+                expirationDate: validExpirationDate,
+                securityCode: "123",
                 brand: Enums.CardBrand.Visa);
 
             var payment = new Payment(
-                amount: 150.00M, 
-                currency: Enums.Currency.BRL, 
-                installments: 1, 
-                capture: false, 
-                softDescriptor: ".Net Test Project", 
+                amount: 150.00M,
+                currency: Enums.Currency.BRL,
+                installments: 1,
+                capture: false,
+                softDescriptor: "DOTNETPROJECT",
                 creditCard: creditCard);
 
             /* store order number */
             var merchantOrderId = new Random().Next();
 
             var transaction = new Transaction(
-                merchantOrderId: merchantOrderId.ToString(), 
-                customer: customer, 
+                merchantOrderId: merchantOrderId.ToString(),
+                customer: customer,
                 payment: payment);
 
             var returnTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
@@ -74,7 +74,7 @@ namespace Cielo.Tests
                 currency: Enums.Currency.BRL,
                 installments: 1,
                 capture: true,
-                softDescriptor: ".Net Test Project",
+                softDescriptor: "DOTNETPROJECT",
                 creditCard: creditCard);
 
             /* store order number */
@@ -107,7 +107,7 @@ namespace Cielo.Tests
                 currency: Enums.Currency.BRL,
                 installments: 1,
                 capture: true,
-                softDescriptor: ".Net Test Project",
+                softDescriptor: "DOTNETPROJECT",
                 creditCard: creditCard);
 
             /* store order number */
@@ -140,7 +140,7 @@ namespace Cielo.Tests
                 currency: Enums.Currency.BRL,
                 installments: 1,
                 capture: true,
-                softDescriptor: ".Net Test Project",
+                softDescriptor: "DOTNETPROJECT",
                 creditCard: creditCard);
 
             /* store order number */
@@ -173,7 +173,7 @@ namespace Cielo.Tests
                 currency: Enums.Currency.BRL,
                 installments: 1,
                 capture: true,
-                softDescriptor: ".Net Test Project",
+                softDescriptor: "DOTNETPROJECT",
                 creditCard: creditCard);
 
             /* store order number */
@@ -206,7 +206,7 @@ namespace Cielo.Tests
                 currency: Enums.Currency.BRL,
                 installments: 1,
                 capture: true,
-                softDescriptor: ".Net Test Project",
+                softDescriptor: "DOTNETPROJECT",
                 creditCard: creditCard);
 
             /* store order number */
@@ -239,7 +239,7 @@ namespace Cielo.Tests
                 currency: Enums.Currency.BRL,
                 installments: 1,
                 capture: true,
-                softDescriptor: ".Net Test Project",
+                softDescriptor: "DOTNETPROJECT",
                 creditCard: creditCard);
 
             /* store order number */
@@ -272,7 +272,7 @@ namespace Cielo.Tests
                 currency: Enums.Currency.BRL,
                 installments: 1,
                 capture: true,
-                softDescriptor: ".Net Test Project",
+                softDescriptor: "DOTNETPROJECT",
                 creditCard: creditCard);
 
             /* store order number */
@@ -305,7 +305,7 @@ namespace Cielo.Tests
                 currency: Enums.Currency.BRL,
                 installments: 1,
                 capture: false,
-                softDescriptor: ".Net Test Project",
+                softDescriptor: "DOTNETPROJECT",
                 creditCard: creditCard);
 
             /* store order number */
@@ -339,7 +339,7 @@ namespace Cielo.Tests
                 currency: Enums.Currency.BRL,
                 installments: 1,
                 capture: false,
-                softDescriptor: ".Net Test Project",
+                softDescriptor: "DOTNETPROJECT",
                 creditCard: creditCard);
 
             /* store order number */
@@ -374,7 +374,7 @@ namespace Cielo.Tests
                 currency: Enums.Currency.BRL,
                 installments: 1,
                 capture: false,
-                softDescriptor: ".Net Test Project",
+                softDescriptor: "DOTNETPROJECT",
                 creditCard: creditCard);
 
             /* store order number */
@@ -409,7 +409,7 @@ namespace Cielo.Tests
                 currency: Enums.Currency.BRL,
                 installments: 1,
                 capture: false,
-                softDescriptor: ".Net Test Project",
+                softDescriptor: "DOTNETPROJECT",
                 creditCard: creditCard);
 
             /* store order number */
@@ -422,7 +422,7 @@ namespace Cielo.Tests
 
             var createTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
 
-            Assert.IsNotNull(createTransaction.Payment.CreditCard.CardToken, "Não foi criado o token");  
+            Assert.IsNotNull(createTransaction.Payment.CreditCard.CardToken, "Não foi criado o token");
         }
 
         [TestMethod()]
@@ -443,7 +443,7 @@ namespace Cielo.Tests
                 currency: Enums.Currency.BRL,
                 installments: 1,
                 capture: true,
-                softDescriptor: ".Net Test Project",
+                softDescriptor: "DOTNETPROJECT",
                 creditCard: creditCard);
 
             /* store order number */
@@ -457,6 +457,83 @@ namespace Cielo.Tests
             var createTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
 
             Assert.IsNotNull(createTransaction.Payment.CreditCard.CardToken, "Não foi criado o token");
+        }
+
+        [TestMethod()]
+        public void CriaUmaTransacaoRecorrenteAgendadaParaOProximoMesResultadoPagamentoProgramado()
+        {
+            var customer = new Customer(name: "Fulano da Silva");
+
+            var creditCard = new CreditCard(
+                cardNumber: SandboxCreditCard.Authorized2,
+                holder: "Teste Holder",
+                expirationDate: validExpirationDate,
+                securityCode: "123",
+                brand: Enums.CardBrand.Visa,
+                saveCard: true);
+
+            var recurrentPayment = new RecurrentPayment(
+                interval: Enums.Interval.Monthly,
+                startDate: DateTime.Now.AddMonths(1),
+                endDate: DateTime.Now.AddMonths(7));
+
+            var payment = new Payment(
+                amount: 150.00M,
+                currency: Enums.Currency.BRL,
+                installments: 1,
+                softDescriptor: "DOTNETPROJECT",
+                creditCard: creditCard,
+                recurrentPayment: recurrentPayment);
+
+            /* store order number */
+            var merchantOrderId = new Random().Next();
+
+            var transaction = new Transaction(
+                merchantOrderId: merchantOrderId.ToString(),
+                customer: customer,
+                payment: payment);
+
+            var createTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
+
+            Assert.IsTrue(createTransaction.Payment.Status == Enums.Status.Scheduled, "Recorrência não foi programada");
+        }
+
+        [TestMethod()]
+        public void CriaUmaTransacaoRecorrenteParaAgoraResultadoPagamentoAutorizado()
+        {
+            var customer = new Customer(name: "Fulano da Silva");
+
+            var creditCard = new CreditCard(
+                cardNumber: SandboxCreditCard.Authorized2,
+                holder: "Teste Holder",
+                expirationDate: validExpirationDate,
+                securityCode: "123",
+                brand: Enums.CardBrand.Visa,
+                saveCard: true);
+
+            var recurrentPayment = new RecurrentPayment(
+                interval: Enums.Interval.Monthly,
+                endDate: DateTime.Now.AddMonths(6));
+
+            var payment = new Payment(
+                amount: 150.00M,
+                currency: Enums.Currency.BRL,
+                installments: 1,
+                softDescriptor: "DOTNETPROJECT",
+                creditCard: creditCard,
+                recurrentPayment: recurrentPayment);
+
+            /* store order number */
+            var merchantOrderId = new Random().Next();
+
+            var transaction = new Transaction(
+                merchantOrderId: merchantOrderId.ToString(),
+                customer: customer,
+                payment: payment);
+
+            var createTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
+
+            Assert.IsTrue(createTransaction.Payment.Status == Enums.Status.Authorized, "Recorrência não foi autorizada");
         }
     }
 }

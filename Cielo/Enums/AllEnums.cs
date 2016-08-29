@@ -107,15 +107,15 @@ namespace Cielo.Enums
     public enum Interval
     {
         [EnumMember(Value = "Monthly")]
-        Monthly,
+        Monthly = 1,
         [EnumMember(Value = "Bimonthly")]
-        Bimonthly,
+        Bimonthly = 2,
         [EnumMember(Value = "Quarterly")]
-        Quarterly,
+        Quarterly = 3,
         [EnumMember(Value = "SemiAnnual")]
-        SemiAnnual,
+        SemiAnnual = 6,
         [EnumMember(Value = "Annual")]
-        Annual
+        Annual = 12
     }
 
     public static class Country
