@@ -50,7 +50,7 @@ var returnTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
 ```
 
 ### Links
-- API Cielo: http://developercielo.github.io/Webservice-3.0
-- Merchant Key e Merchant Id para integração em Sandbox: https://cadastrosandbox.cieloecommerce.cielo.com.br
-- Git da Cielo: https://github.com/DeveloperCielo
-- Mais informações em Cielo Developers: https://www.cielo.com.br/desenvolvedores e http://bit.ly/2bO2Cw2
+* [API Cielo] (http://developercielo.github.io/Webservice-3.0)
+* [Merchant Key e Merchant Id para integração em Sandbox] (https://cadastrosandbox.cieloecommerce.cielo.com.br)
+* [Git da Cielo] (https://github.com/DeveloperCielo)
+* [Mais informações em Cielo Developers] (https://www.cielo.com.br/desenvolvedores e http://bit.ly/2bO2Cw2)
