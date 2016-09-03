@@ -24,13 +24,13 @@ var creditCard = new CreditCard(
     holder: "Teste Holder", 
     expirationDate: new DateTime(DateTime.Now.Year + 1, 12, 1), 
     securityCode: "123", 
-    brand: Enums.CardBrand.Visa,
+    brand: CardBrand.Visa,
     saveCard: false);
 
 /* create payment with credit card */
 var payment = new Payment(
     amount: 119.19M, 
-    currency: Enums.Currency.BRL, 
+    currency: Currency.BRL, 
     installments: 1, 
     capture: true, 
     softDescriptor: ".Net Test Project", 

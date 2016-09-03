@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cielo.Configurations
+namespace Cielo
 {
     public interface IEnvironment
     {
-        string TransactionUrl { get; set; }
-
-        string QueryUrl { get; set; }
+        string TransactionUrl { get; }
+        string QueryUrl { get; }
     }
 }

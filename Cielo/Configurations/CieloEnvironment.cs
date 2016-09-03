@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cielo.Configurations
+namespace Cielo
 {
     public class CieloEnvironment : IEnvironment
     {
@@ -18,8 +18,8 @@ namespace Cielo.Configurations
             this.QueryUrl = queryUrl;
         }
 
-        public string TransactionUrl { get; set; }
+        public string TransactionUrl { get; protected set; }
 
-        public string QueryUrl { get; set; }
+        public string QueryUrl { get; protected set; }
     }
 }

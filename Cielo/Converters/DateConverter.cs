@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Cielo.Converters
 {
-    public class DateConverter : IsoDateTimeConverter
+    internal class DateConverter : IsoDateTimeConverter
     {
         public DateConverter()
         {

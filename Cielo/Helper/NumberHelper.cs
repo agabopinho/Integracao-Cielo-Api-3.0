@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cielo.Helper
 {
-    public static class NumberHelper
+    internal static class NumberHelper
     {
         public static decimal IntegerToDecimal(object value)
         {

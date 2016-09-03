@@ -1,4 +1,4 @@
-﻿using Cielo.Models;
+﻿using Cielo;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cielo.Exceptions
+namespace Cielo
 {
     public class CieloException : Exception
     {

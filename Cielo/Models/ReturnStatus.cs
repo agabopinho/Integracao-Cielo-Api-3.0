@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cielo.Models
+namespace Cielo
 {
     public class ReturnStatus
     {
@@ -14,7 +14,7 @@ namespace Cielo.Models
         public string ReasonMessage { get; set; }
         public string ProviderReturnCode { get; set; }
         public string ProviderReturnMessage { get; set; }
-        public Enums.Status? Status { get; set; }
+        public Status? Status { get; set; }
         public List<Link> Links { get; set; }
     }
 }

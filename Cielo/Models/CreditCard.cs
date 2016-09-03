@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cielo.Models
+namespace Cielo
 {
     public class CreditCard
     {
@@ -15,14 +15,14 @@ namespace Cielo.Models
         {
         }
 
-        public CreditCard(Guid cardToken, string securityCode, Enums.CardBrand brand)
+        public CreditCard(Guid cardToken, string securityCode, CardBrand brand)
         {
             this.CardToken = cardToken;
             this.SecurityCode = securityCode;
             this.Brand = brand;
         }
 
-        public CreditCard(string cardNumber, string holder, DateTime expirationDate, string securityCode, Enums.CardBrand brand, bool saveCard = false)
+        public CreditCard(string cardNumber, string holder, DateTime expirationDate, string securityCode, CardBrand brand, bool saveCard = false)
         {
             this.CardNumber = cardNumber;
             this.Holder = holder;
@@ -40,6 +40,6 @@ namespace Cielo.Models
         public string SecurityCode { get; set; }
         public bool? SaveCard { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
-        public Enums.CardBrand? Brand { get; set; }
+        public CardBrand? Brand { get; set; }
     }
 }

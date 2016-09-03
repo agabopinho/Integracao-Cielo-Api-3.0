@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cielo.Models
+namespace Cielo
 {
     public class Customer
     {
@@ -22,7 +22,7 @@ namespace Cielo.Models
         public string Name { get; set; }
         public string Identity { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
-        public Enums.IdentityType? IdentityType { get; set; }
+        public IdentityType? IdentityType { get; set; }
         public string Email { get; set; }
         public DateTime? Birthdate { get; set; }
         public Address Address { get; set; }

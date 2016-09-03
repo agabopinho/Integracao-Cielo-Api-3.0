@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace Cielo.Converters
 {
-    public class CreditCardExpirationDateConverter : IsoDateTimeConverter
+    internal class CreditCardExpirationDateConverter : IsoDateTimeConverter
     {
         public CreditCardExpirationDateConverter()
         {

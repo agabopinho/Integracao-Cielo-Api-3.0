@@ -7,7 +7,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace Cielo.Models
+namespace Cielo
 {
     public class Error
     {
