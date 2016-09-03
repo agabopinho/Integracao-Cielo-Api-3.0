@@ -53,7 +53,7 @@ var returnTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
 * [Cielo API 3.0] (http://developercielo.github.io/Webservice-3.0)
 * [Webservice 1.5] (http://bit.ly/2bO2Cw2)
 * [Merchant Key e Merchant Id em Sandbox] (https://cadastrosandbox.cieloecommerce.cielo.com.br)
-* [Github da Cielo] (https://github.com/DeveloperCielo)
+* [Github Cielo] (https://github.com/DeveloperCielo)
 * [Cielo Developers] (https://www.cielo.com.br/desenvolvedores)
 
 ### Geração de pacote - Nuget pack
