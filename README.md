@@ -60,4 +60,4 @@ var returnTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
 ``` 
 > nuget pack -Prop Configuration=Release -Prop AssemblyName=CieloSharpAPI -Build
 ```
-* [Package published] (https://www.nuget.org/packages/CieloSharpAPI)
+* [Package] (https://www.nuget.org/packages/CieloSharpAPI)
