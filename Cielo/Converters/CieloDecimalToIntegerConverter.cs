@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Cielo.Converters
 {
-    public class CieloDecimalToIntegerConverter : JsonConverter
+    internal class CieloDecimalToIntegerConverter : JsonConverter
     {
         public override bool CanRead { get; } = true;
 

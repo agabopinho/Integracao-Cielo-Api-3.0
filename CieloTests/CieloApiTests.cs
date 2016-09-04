@@ -4,8 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Cielo.Models;
-using Cielo.Configurations;
 
 namespace Cielo.Tests
 {
@@ -34,11 +32,11 @@ namespace Cielo.Tests
                 holder: "Teste Holder",
                 expirationDate: validExpirationDate,
                 securityCode: "123",
-                brand: Enums.CardBrand.Visa);
+                brand: CardBrand.Visa);
 
             var payment = new Payment(
                 amount: 150.00M,
-                currency: Enums.Currency.BRL,
+                currency: Currency.BRL,
                 installments: 1,
                 capture: false,
                 softDescriptor: "DOTNETPROJECT",
@@ -54,7 +52,7 @@ namespace Cielo.Tests
 
             var returnTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
 
-            Assert.IsTrue(returnTransaction.Payment.Status == Enums.Status.Authorized, "Transação não foi autorizada");
+            Assert.IsTrue(returnTransaction.Payment.Status == Status.Authorized, "Transação não foi autorizada");
         }
 
         [TestMethod()]
@@ -67,11 +65,11 @@ namespace Cielo.Tests
                 holder: "Teste Holder",
                 expirationDate: validExpirationDate,
                 securityCode: "123",
-                brand: Enums.CardBrand.Visa);
+                brand: CardBrand.Visa);
 
             var payment = new Payment(
                 amount: 2500,
-                currency: Enums.Currency.BRL,
+                currency: Currency.BRL,
                 installments: 1,
                 capture: true,
                 softDescriptor: "DOTNETPROJECT",
@@ -87,7 +85,7 @@ namespace Cielo.Tests
 
             var returnTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
 
-            Assert.IsTrue(returnTransaction.Payment.Status == Enums.Status.PaymentConfirmed, "Transação não teve pagamento confirmado");
+            Assert.IsTrue(returnTransaction.Payment.Status == Status.PaymentConfirmed, "Transação não teve pagamento confirmado");
         }
 
         [TestMethod()]
@@ -100,11 +98,11 @@ namespace Cielo.Tests
                 holder: "Teste Holder",
                 expirationDate: validExpirationDate,
                 securityCode: "123",
-                brand: Enums.CardBrand.Visa);
+                brand: CardBrand.Visa);
 
             var payment = new Payment(
                 amount: 150.00M,
-                currency: Enums.Currency.BRL,
+                currency: Currency.BRL,
                 installments: 1,
                 capture: true,
                 softDescriptor: "DOTNETPROJECT",
@@ -120,7 +118,7 @@ namespace Cielo.Tests
 
             var returnTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
 
-            Assert.IsTrue(returnTransaction.Payment.Status == Enums.Status.Denied, "Transação não foi negada");
+            Assert.IsTrue(returnTransaction.Payment.Status == Status.Denied, "Transação não foi negada");
         }
 
         [TestMethod()]
@@ -133,11 +131,11 @@ namespace Cielo.Tests
                 holder: "Teste Holder",
                 expirationDate: validExpirationDate,
                 securityCode: "123",
-                brand: Enums.CardBrand.Visa);
+                brand: CardBrand.Visa);
 
             var payment = new Payment(
                 amount: 150.00M,
-                currency: Enums.Currency.BRL,
+                currency: Currency.BRL,
                 installments: 1,
                 capture: true,
                 softDescriptor: "DOTNETPROJECT",
@@ -153,7 +151,7 @@ namespace Cielo.Tests
 
             var returnTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
 
-            Assert.IsTrue(returnTransaction.Payment.Status == Enums.Status.Denied, "Transação não foi negada");
+            Assert.IsTrue(returnTransaction.Payment.Status == Status.Denied, "Transação não foi negada");
         }
 
         [TestMethod()]
@@ -166,11 +164,11 @@ namespace Cielo.Tests
                 holder: "Teste Holder",
                 expirationDate: validExpirationDate,
                 securityCode: "123",
-                brand: Enums.CardBrand.Visa);
+                brand: CardBrand.Visa);
 
             var payment = new Payment(
                 amount: 150.00M,
-                currency: Enums.Currency.BRL,
+                currency: Currency.BRL,
                 installments: 1,
                 capture: true,
                 softDescriptor: "DOTNETPROJECT",
@@ -186,7 +184,7 @@ namespace Cielo.Tests
 
             var returnTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
 
-            Assert.IsTrue(returnTransaction.Payment.Status == Enums.Status.Denied, "Transação não foi negada");
+            Assert.IsTrue(returnTransaction.Payment.Status == Status.Denied, "Transação não foi negada");
         }
 
         [TestMethod()]
@@ -199,11 +197,11 @@ namespace Cielo.Tests
                 holder: "Teste Holder",
                 expirationDate: invalidExpirationDate,
                 securityCode: "123",
-                brand: Enums.CardBrand.Visa);
+                brand: CardBrand.Visa);
 
             var payment = new Payment(
                 amount: 150.00M,
-                currency: Enums.Currency.BRL,
+                currency: Currency.BRL,
                 installments: 1,
                 capture: true,
                 softDescriptor: "DOTNETPROJECT",
@@ -219,7 +217,7 @@ namespace Cielo.Tests
 
             var returnTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
 
-            Assert.IsTrue(returnTransaction.Payment.Status == Enums.Status.Denied, "Transação não foi negada");
+            Assert.IsTrue(returnTransaction.Payment.Status == Status.Denied, "Transação não foi negada");
         }
 
         [TestMethod()]
@@ -232,11 +230,11 @@ namespace Cielo.Tests
                 holder: "Teste Holder",
                 expirationDate: validExpirationDate,
                 securityCode: "123",
-                brand: Enums.CardBrand.Visa);
+                brand: CardBrand.Visa);
 
             var payment = new Payment(
                 amount: 150.00M,
-                currency: Enums.Currency.BRL,
+                currency: Currency.BRL,
                 installments: 1,
                 capture: true,
                 softDescriptor: "DOTNETPROJECT",
@@ -252,7 +250,7 @@ namespace Cielo.Tests
 
             var returnTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
 
-            Assert.IsTrue(returnTransaction.Payment.Status == Enums.Status.Denied, "Transação não foi negada");
+            Assert.IsTrue(returnTransaction.Payment.Status == Status.Denied, "Transação não foi negada");
         }
 
         [TestMethod()]
@@ -265,11 +263,11 @@ namespace Cielo.Tests
                 holder: "Teste Holder",
                 expirationDate: validExpirationDate,
                 securityCode: "123",
-                brand: Enums.CardBrand.Visa);
+                brand: CardBrand.Visa);
 
             var payment = new Payment(
                 amount: 150.00M,
-                currency: Enums.Currency.BRL,
+                currency: Currency.BRL,
                 installments: 1,
                 capture: true,
                 softDescriptor: "DOTNETPROJECT",
@@ -285,7 +283,7 @@ namespace Cielo.Tests
 
             var returnTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
 
-            Assert.IsTrue(returnTransaction.Payment.Status == Enums.Status.Denied, "Transação não foi negada");
+            Assert.IsTrue(returnTransaction.Payment.Status == Status.Denied, "Transação não foi negada");
         }
 
         [TestMethod()]
@@ -298,11 +296,11 @@ namespace Cielo.Tests
                 holder: "Teste Holder",
                 expirationDate: validExpirationDate,
                 securityCode: "123",
-                brand: Enums.CardBrand.Visa);
+                brand: CardBrand.Visa);
 
             var payment = new Payment(
                 amount: 150.00M,
-                currency: Enums.Currency.BRL,
+                currency: Currency.BRL,
                 installments: 1,
                 capture: false,
                 softDescriptor: "DOTNETPROJECT",
@@ -319,7 +317,7 @@ namespace Cielo.Tests
             var createTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
             var captureTransaction = api.CaptureTransaction(Guid.NewGuid(), createTransaction.Payment.PaymentId.Value);
 
-            Assert.IsTrue(captureTransaction.Status == Enums.Status.PaymentConfirmed, "Captura não teve pagamento confirmado");
+            Assert.IsTrue(captureTransaction.Status == Status.PaymentConfirmed, "Captura não teve pagamento confirmado");
         }
 
         [TestMethod()]
@@ -332,11 +330,11 @@ namespace Cielo.Tests
                 holder: "Teste Holder",
                 expirationDate: validExpirationDate,
                 securityCode: "123",
-                brand: Enums.CardBrand.Visa);
+                brand: CardBrand.Visa);
 
             var payment = new Payment(
                 amount: 150.00M,
-                currency: Enums.Currency.BRL,
+                currency: Currency.BRL,
                 installments: 1,
                 capture: false,
                 softDescriptor: "DOTNETPROJECT",
@@ -354,7 +352,7 @@ namespace Cielo.Tests
             var captureTransaction = api.CaptureTransaction(Guid.NewGuid(), createTransaction.Payment.PaymentId.Value);
             var cancelationTransaction = api.CancellationTransaction(Guid.NewGuid(), createTransaction.Payment.PaymentId.Value);
 
-            Assert.IsTrue(cancelationTransaction.Status == Enums.Status.Voided, "Cancelamento não teve sucesso");
+            Assert.IsTrue(cancelationTransaction.Status == Status.Voided, "Cancelamento não teve sucesso");
         }
 
         [TestMethod()]
@@ -367,11 +365,11 @@ namespace Cielo.Tests
                 holder: "Teste Holder",
                 expirationDate: validExpirationDate,
                 securityCode: "123",
-                brand: Enums.CardBrand.Visa);
+                brand: CardBrand.Visa);
 
             var payment = new Payment(
                 amount: 150.25M,
-                currency: Enums.Currency.BRL,
+                currency: Currency.BRL,
                 installments: 1,
                 capture: false,
                 softDescriptor: "DOTNETPROJECT",
@@ -388,7 +386,7 @@ namespace Cielo.Tests
             var createTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
             var captureTransaction = api.CaptureTransaction(Guid.NewGuid(), createTransaction.Payment.PaymentId.Value, 25.00M);
 
-            Assert.IsTrue(captureTransaction.Status == Enums.Status.PaymentConfirmed, "Transação não teve pagamento aprovado");
+            Assert.IsTrue(captureTransaction.Status == Status.PaymentConfirmed, "Transação não teve pagamento aprovado");
         }
 
         [TestMethod()]
@@ -401,12 +399,12 @@ namespace Cielo.Tests
                 holder: "Teste Holder",
                 expirationDate: validExpirationDate,
                 securityCode: "123",
-                brand: Enums.CardBrand.Visa,
+                brand: CardBrand.Visa,
                 saveCard: true);
 
             var payment = new Payment(
                 amount: 157.37M,
-                currency: Enums.Currency.BRL,
+                currency: Currency.BRL,
                 installments: 1,
                 capture: false,
                 softDescriptor: "DOTNETPROJECT",
@@ -435,12 +433,12 @@ namespace Cielo.Tests
                 holder: "Teste Holder",
                 expirationDate: validExpirationDate,
                 securityCode: "123",
-                brand: Enums.CardBrand.Visa,
+                brand: CardBrand.Visa,
                 saveCard: true);
 
             var payment = new Payment(
                 amount: 150.00M,
-                currency: Enums.Currency.BRL,
+                currency: Currency.BRL,
                 installments: 1,
                 capture: true,
                 softDescriptor: "DOTNETPROJECT",
@@ -469,17 +467,17 @@ namespace Cielo.Tests
                 holder: "Teste Holder",
                 expirationDate: validExpirationDate,
                 securityCode: "123",
-                brand: Enums.CardBrand.Visa,
+                brand: CardBrand.Visa,
                 saveCard: true);
 
             var recurrentPayment = new RecurrentPayment(
-                interval: Enums.Interval.Monthly,
+                interval: Interval.Monthly,
                 startDate: DateTime.Now.AddMonths(1),
                 endDate: DateTime.Now.AddMonths(7));
 
             var payment = new Payment(
                 amount: 150.00M,
-                currency: Enums.Currency.BRL,
+                currency: Currency.BRL,
                 installments: 1,
                 softDescriptor: "DOTNETPROJECT",
                 creditCard: creditCard,
@@ -495,7 +493,7 @@ namespace Cielo.Tests
 
             var createTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
 
-            Assert.IsTrue(createTransaction.Payment.Status == Enums.Status.Scheduled, "Recorrência não foi programada");
+            Assert.IsTrue(createTransaction.Payment.Status == Status.Scheduled, "Recorrência não foi programada");
         }
 
         [TestMethod()]
@@ -508,16 +506,16 @@ namespace Cielo.Tests
                 holder: "Teste Holder",
                 expirationDate: validExpirationDate,
                 securityCode: "123",
-                brand: Enums.CardBrand.Visa,
+                brand: CardBrand.Visa,
                 saveCard: true);
 
             var recurrentPayment = new RecurrentPayment(
-                interval: Enums.Interval.Monthly,
+                interval: Interval.Monthly,
                 endDate: DateTime.Now.AddMonths(6));
 
             var payment = new Payment(
                 amount: 150.00M,
-                currency: Enums.Currency.BRL,
+                currency: Currency.BRL,
                 installments: 1,
                 softDescriptor: "DOTNETPROJECT",
                 creditCard: creditCard,
@@ -533,7 +531,7 @@ namespace Cielo.Tests
 
             var createTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
 
-            Assert.IsTrue(createTransaction.Payment.Status == Enums.Status.Authorized, "Recorrência não foi autorizada");
+            Assert.IsTrue(createTransaction.Payment.Status == Status.Authorized, "Recorrência não foi autorizada");
         }
     }
 }

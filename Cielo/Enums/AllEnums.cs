@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cielo.Enums
+namespace Cielo
 {
     public enum CardBrand
     {

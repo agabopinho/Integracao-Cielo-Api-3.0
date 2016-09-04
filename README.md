@@ -1,16 +1,25 @@
 # Cielo-API-3.0
 
-Projeto em .NET para integração com a API de pagamento Cielo API 3.0.
+Integração .NET com a API RESTful de pagamento Cielo – API 3.0.
+
+* [Nuget] (https://www.nuget.org/packages/CieloSharpAPI)
+
+### Links
+* [Cielo API 3.0] (http://developercielo.github.io/Webservice-3.0)
+* [Webservice 1.5] (http://bit.ly/2bO2Cw2)
+* [Merchant Key e Merchant Id em Sandbox] (https://cadastrosandbox.cieloecommerce.cielo.com.br)
+* [Github Cielo] (https://github.com/DeveloperCielo)
+* [Cielo Developers] (https://www.cielo.com.br/desenvolvedores)
 
 ### Métodos
 
-- CreateTransaction
-- GetTransaction
-- CancellationTransaction
-- CaptureTransaction
+* CreateTransaction
+* GetTransaction
+* CancellationTransaction
+* CaptureTransaction
 
 ### Exemplo de uso em ambiente sandbox
-- Transação com captura
+* Transação com captura
 ```
 /* api instance */
 var api = new CieloApi(CieloEnvironment.Sandbox, Merchant.Sandbox);
@@ -24,13 +33,13 @@ var creditCard = new CreditCard(
     holder: "Teste Holder", 
     expirationDate: new DateTime(DateTime.Now.Year + 1, 12, 1), 
     securityCode: "123", 
-    brand: Enums.CardBrand.Visa,
+    brand: CardBrand.Visa,
     saveCard: false);
 
 /* create payment with credit card */
 var payment = new Payment(
     amount: 119.19M, 
-    currency: Enums.Currency.BRL, 
+    currency: Currency.BRL, 
     installments: 1, 
     capture: true, 
     softDescriptor: ".Net Test Project", 
@@ -49,8 +58,7 @@ var transaction = new Transaction(
 var returnTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
 ```
 
-### Links
-- API Cielo: http://developercielo.github.io/Webservice-3.0
-- Merchant Key e Merchant Id para integração em Sandbox: https://cadastrosandbox.cieloecommerce.cielo.com.br
-- Git da Cielo: https://github.com/DeveloperCielo
-- Mais informações em Cielo Developers: https://www.cielo.com.br/desenvolvedores e http://bit.ly/2bO2Cw2
+### Nuget pack
+``` 
+> nuget pack Cielo.csproj -Prop Configuration=Release -Prop AssemblyName=CieloSharpAPI -Build
+```

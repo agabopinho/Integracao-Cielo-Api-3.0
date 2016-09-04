@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cielo.Models
+namespace Cielo
 {
     public class RecurrentPayment 
     {
@@ -15,14 +15,14 @@ namespace Cielo.Models
         {
         }
 
-        public RecurrentPayment(Enums.Interval interval, DateTime endDate)
+        public RecurrentPayment(Interval interval, DateTime endDate)
         {
             this.Interval = interval;
             this.EndDate = endDate;
             this.AuthorizeNow = true;
         }
 
-        public RecurrentPayment(Enums.Interval interval, DateTime startDate, DateTime endDate)
+        public RecurrentPayment(Interval interval, DateTime startDate, DateTime endDate)
         {
             if (startDate.Date <= DateTime.Now.Date)
             {
@@ -44,7 +44,7 @@ namespace Cielo.Models
         [JsonConverter(typeof(DateConverter))]
         public DateTime? NextRecurrency { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
-        public Enums.Interval Interval { get; set; }
+        public Interval Interval { get; set; }
         public Link Link { get; set; }
         public string ReasonCode { get; set; }
         public string ReasonMessage { get; set; }

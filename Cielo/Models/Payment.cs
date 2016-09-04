@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Cielo.Models
+namespace Cielo
 {
     public class Payment : ReturnStatus
     {
@@ -20,9 +20,9 @@ namespace Cielo.Models
         {
         }
 
-        public Payment(decimal amount, Enums.Currency currency, int installments, bool capture, string softDescriptor, CreditCard creditCard, string country = Enums.Country.BRA)
+        public Payment(decimal amount, Currency currency, int installments, bool capture, string softDescriptor, CreditCard creditCard, string country = Cielo.Country.BRA)
         {
-            this.Type = Enums.PaymentType.CreditCard;
+            this.Type = PaymentType.CreditCard;
             this.Amount = amount;
             this.Currency = currency;
             this.Installments = installments;
@@ -32,9 +32,9 @@ namespace Cielo.Models
             this.Country = country;
         }
 
-        public Payment(decimal amount, Enums.Currency currency, int installments, string softDescriptor, CreditCard creditCard, RecurrentPayment recurrentPayment, string country = Enums.Country.BRA)
+        public Payment(decimal amount, Currency currency, int installments, string softDescriptor, CreditCard creditCard, RecurrentPayment recurrentPayment, string country = Cielo.Country.BRA)
         {
-            this.Type = Enums.PaymentType.CreditCard;
+            this.Type = PaymentType.CreditCard;
             this.Amount = amount;
             this.Currency = currency;
             this.Installments = installments;
@@ -48,7 +48,7 @@ namespace Cielo.Models
         public decimal? ServiceTaxAmount { get; set; }
         public int? Installments { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
-        public Enums.Interest? Interest { get; set; }
+        public Interest? Interest { get; set; }
         public bool? Capture { get; set; }
         public bool? Authenticate { get; set; }
         public bool? Recurrent { get; set; }
@@ -77,10 +77,10 @@ namespace Cielo.Models
         }
         public string ReturnUrl { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
-        public Enums.Provider? Provider { get; set; }
+        public Provider? Provider { get; set; }
         public Guid? PaymentId { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
-        public Enums.PaymentType? Type { get; set; }
+        public PaymentType? Type { get; set; }
         [JsonConverter(typeof(CieloDecimalToIntegerConverter))]
         public decimal? Amount { get; set; }
         public DateTime? ReceivedDate { get; set; }
@@ -88,7 +88,7 @@ namespace Cielo.Models
         public decimal? CapturedAmount { get; set; }
         public DateTime? CapturedDate { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
-        public Enums.Currency? Currency { get; set; }
+        public Currency? Currency { get; set; }
         public string Country { get; set; }
         public List<object> ExtraDataCollection { get; set; }
         public string ExpirationDate { get; set; }

@@ -15,7 +15,7 @@ namespace Cielo.Serializers
     /// Default JSON serializer for request bodies
     /// Doesn't currently use the SerializeAs attribute, defers to Newtonsoft's attributes
     /// </summary>
-    public class CieloJsonSerializer : ISerializer
+    internal class CieloJsonSerializer : ISerializer
     {
         protected Newtonsoft.Json.JsonSerializer Serializer { get; set; }
 

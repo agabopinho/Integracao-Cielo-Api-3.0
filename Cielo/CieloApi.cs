@@ -1,6 +1,5 @@
-﻿using Cielo.Configurations;
+﻿using Cielo;
 using Cielo.Helper;
-using Cielo.Models;
 using Newtonsoft.Json;
 using RestSharp;
 using System;

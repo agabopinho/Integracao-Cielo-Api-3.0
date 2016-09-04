@@ -1,12 +1,9 @@
-﻿using log4net;
-using log4net.Config;
-using RestSharp;
+﻿using RestSharp;
 using System;
 using System.Net;
 using System.Linq;
 using Cielo.Serializers;
-using Cielo.Exceptions;
-using Cielo.Configurations;
+using Cielo;
 
 namespace Cielo
 {
@@ -53,11 +50,7 @@ namespace Cielo
             if (!ValidStatusCodes.Contains(response.StatusCode) ||
                 response.ResponseStatus != ResponseStatus.Completed)
             {
-                var exception = new CieloException(response);
-
-                // TODO: log errors
-
-                throw exception;
+                throw new CieloException(response);
             }
         }
     }
