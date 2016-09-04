@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Cielo API REST 3.0")]
-[assembly: AssemblyDescription("Integração com a API REST 3.0 de pagamento da Cielo.")]
+[assembly: AssemblyTitle("Cielo-API-3.0")]
+[assembly: AssemblyDescription("Integração .NET com a API RESTful de pagamento Cielo – API 3.0. Github: https://github.com/agaboduarte/Cielo-API-3.0")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Ágabo D. de Pinho (https://github.com/agaboduarte)")]
-[assembly: AssemblyProduct("Cielo API REST 3.0")]
+[assembly: AssemblyProduct("Cielo-API-3.0")]
 [assembly: AssemblyCopyright("Copyright © 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
