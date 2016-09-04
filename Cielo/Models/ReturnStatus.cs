@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +16,7 @@ namespace Cielo
         public string ReasonMessage { get; set; }
         public string ProviderReturnCode { get; set; }
         public string ProviderReturnMessage { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public Status? Status { get; set; }
         public List<Link> Links { get; set; }
     }
