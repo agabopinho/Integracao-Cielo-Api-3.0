@@ -5,12 +5,23 @@
     <version>$version$</version>
     <title>Cielo-API-3.0</title>
     <authors>Ágabo D. de Pinho (https://github.com/agaboduarte)</authors>
-    <language>en-US</language>
+    <licenseUrl>https://raw.github.com/agaboduarte/Cielo-API-3.0/master/LICENSE.md</licenseUrl>
     <projectUrl>https://github.com/agaboduarte/Cielo-API-3.0</projectUrl>
     <iconUrl>https://www.cielo.com.br/wps/contenthandler/!ut/p/digest!IqyPQTzf5NM0a1sGVdMjqg/war/cielo-tema/themes/estatico/images/logo.png</iconUrl>
-    <licenseUrl>https://raw.github.com/agaboduarte/Cielo-API-3.0/master/LICENSE.md</licenseUrl>
-    <description>Integração .NET com a API RESTful de pagamento Cielo – API 3.0. Mais informações no Github.</description>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+      Integração .NET com a API RESTful de pagamento Cielo – API 3.0.
+      Github: https://github.com/agaboduarte/Cielo-API-3.0
+    </description>
+    <releaseNotes>
+      Github: https://github.com/agaboduarte/Cielo-API-3.0
+    </releaseNotes>
+    <summary>
+      Integração .NET com a API RESTful de pagamento Cielo – API 3.0.
+      Github: https://github.com/agaboduarte/Cielo-API-3.0
+    </summary>
     <copyright>Copyright 2016</copyright>
     <tags>cielo pagamento cartao debido credito pagamento parcelamento</tags>
+    <language>en-US</language>
   </metadata>
 </package>
