@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>CieloSharpAPI</id>
+    <version>$version$</version>
+    <title>Cielo-API-3.0</title>
+    <authors>Ágabo D. de Pinho (https://github.com/agaboduarte)</authors>
+    <language>en-US</language>
+    <projectUrl>https://github.com/agaboduarte/Cielo-API-3.0</projectUrl>
+    <iconUrl>https://www.cielo.com.br/wps/contenthandler/!ut/p/digest!IqyPQTzf5NM0a1sGVdMjqg/war/cielo-tema/themes/estatico/images/logo.png</iconUrl>
+    <licenseUrl>https://raw.github.com/agaboduarte/Cielo-API-3.0/master/LICENSE.md</licenseUrl>
+    <description>Integração .NET com a API RESTful de pagamento Cielo – API 3.0. Mais informações no Github.</description>
+    <copyright>Copyright 2016</copyright>
+    <tags>cielo pagamento cartao debido credito pagamento parcelamento</tags>
+  </metadata>
+</package>

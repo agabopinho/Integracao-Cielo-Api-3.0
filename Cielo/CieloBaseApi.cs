@@ -1,6 +1,4 @@
-﻿using log4net;
-using log4net.Config;
-using RestSharp;
+﻿using RestSharp;
 using System;
 using System.Net;
 using System.Linq;
