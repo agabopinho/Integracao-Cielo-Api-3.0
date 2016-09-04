@@ -1,6 +1,6 @@
 # Cielo-API-3.0
 
-Integração .NET com a API RESTful de pagamento Cielo (API 3.0)
+Integração .NET com a API RESTful de pagamento Cielo – API 3.0.
 
 * [Nuget] (https://www.nuget.org/packages/CieloSharpAPI)
 
