@@ -215,9 +215,16 @@ namespace Cielo.Tests
                 customer: customer,
                 payment: payment);
 
-            var returnTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
+            try
+            {
+                var returnTransaction = api.CreateTransaction(Guid.NewGuid(), transaction);
 
-            Assert.IsTrue(returnTransaction.Payment.Status == Status.Denied, "Transação não foi negada");
+                Assert.IsTrue(returnTransaction.Payment.Status == Status.Denied, "Transação não foi negada");
+            }
+            catch (CieloException e)
+            {
+                Assert.IsTrue(e.CieloErrors.Any(i => i.Code == 126));
+            }
         }
 
         [TestMethod()]
