@@ -89,7 +89,9 @@ namespace Cielo
         [EnumMember(Value = "BancoDoBrasil")]
         BancoDoBrasil,
         [EnumMember(Value = "Simulado")]
-        Simulado
+        Simulado,
+        [EnumMember(Value = "Cielo")]
+        Cielo
     }
 
     public enum IdentityType
