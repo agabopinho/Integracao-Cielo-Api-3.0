@@ -12,7 +12,7 @@ Essa biblioteca atende os seguintes cenários:
 - Pagamento com cartão, autorização para captura posterior
 - Captura total ou parcial de autorização
 - Cancelamento de autorização
-- Tokenização de cartão
+- Tokenização dos dados do cartão
 - Criaçao de pagamento recorrente
 - Agendamento de pagamento recorrente para uma data futura
 
