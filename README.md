@@ -2,7 +2,7 @@
 
 
 Biblioteca de integração com Cielo Api 3.0. 
-- Para utilização, você pode criar um Fork ou realizar a instalação via [Nuget](https://www.nuget.org/packages/CieloSharpAPI).
+- Para utilização, você pode adicionar a referência deste repositório como um submodule, criar um Fork ou realizar a instalação via [Nuget](https://www.nuget.org/packages/CieloSharpAPI).
 
 Cenários atendidos
 ----
